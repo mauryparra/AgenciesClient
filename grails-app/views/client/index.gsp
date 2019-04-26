@@ -126,6 +126,7 @@
             error: function (data) {
                 console.log('An error occurred.');
                 console.log(data);
+                $('#resultados').html("Error al obtener resultados, consulte la consola.");
             },
         });
 
