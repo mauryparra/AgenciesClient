@@ -109,6 +109,38 @@
         };
     }
 
+    function saveAgency(element) {
+        $.ajax({
+            type: "POST",
+            url: '/add/' + element.value,
+            success: function (data) {
+                console.log('Submission was successful.');
+                alert("Guardado");
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+                alert("Error al guardar");
+            },
+        });
+    }
+
+    function deleteAgency(element) {
+        $.ajax({
+            type: "POST",
+            url: '/delete/' + element.value,
+            success: function (data) {
+                console.log('Submission was successful.');
+                alert("Borrado");
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+                alert("Error al borrar");
+            },
+        });
+    }
+
     $(document).on('submit', '#filtros', function(event){
         event.preventDefault();
 
@@ -120,7 +152,6 @@
             data: form.serialize(),
             success: function (data) {
                 console.log('Submission was successful.');
-                console.log(data);
                 $('#resultados').html(data);
             },
             error: function (data) {

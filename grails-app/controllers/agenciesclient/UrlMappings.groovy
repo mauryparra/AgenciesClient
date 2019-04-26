@@ -13,6 +13,9 @@ class UrlMappings {
         "/"(controller: 'client')
         "/obtenerDatos"(controller: 'client', action: 'consultarapi')
 
+        "/add/$id"(controller: 'client', action: 'add')
+        "/delete/$id"(controller: 'client', action: 'delete')
+
         "/agency"(resources:'agency') {
             "/address"(resources:'address')
         }
