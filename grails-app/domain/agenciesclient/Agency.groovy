@@ -21,16 +21,16 @@ class Agency {
 
     static constraints = {
         address nullable: false
-        agency_code blank: false, unique: true
-        correspondent_id blank: true
-        description blank: false
-        disabled blank: false
-        distance blank: true
+        agency_code nullable: false, unique: true
+        correspondent_id nullable: true
+        description nullable: true
+        disabled nullable: true
+        distance nullable: true
         id blank: false, unique: true
-        payment_method_id blank: false
-        phone blank: true
-        site_id blank: false
-        terminal blank: false
+        payment_method_id nullable: true
+        phone nullable: true
+        site_id nullable: true
+        terminal nullable: true
 
     }
 }

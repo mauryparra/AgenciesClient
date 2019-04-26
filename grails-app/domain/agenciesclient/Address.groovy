@@ -16,12 +16,12 @@ class Address {
     static belongsTo = [agency: Agency]
 
     static constraints = {
-        address_line blank: false
-        city blank: false
-        country blank: false
-        location blank: false
-        other_info blank: true
-        state blank: false
-        zip_code blank: false
+        address_line nullable: false
+        city nullable: false
+        country nullable: false
+        location nullable: false
+        other_info nullable: true
+        state nullable: false
+        zip_code nullable: true
     }
 }

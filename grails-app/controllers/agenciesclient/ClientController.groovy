@@ -4,7 +4,9 @@ import groovy.json.JsonSlurper
 
 class ClientController {
 
-    static HashMap<String, Agency> agenciasMap = new HashMap<String, Agency>();
+    AgencyService agencyService
+
+    static HashMap<String, Agency> agenciasMap = new HashMap<String, Agency>()
 
     def index() {
 
@@ -13,7 +15,7 @@ class ClientController {
     def consultarapi() {
 
         def parametros = "?site_id=" + params.site_id + "&payment_method_id=" + params.payment_method_id +
-                "&near_to=" + params.lat + "," + params.long + "," + params.radio +
+                "&near_to=" + (params.lat ? params.lat + "," + params.long + "," + params.radio : "") +
                 "&limit=" + params.limit + "&offset=" + params.offset + "&order_by=" + params.order_by
 
         def url = new URL("http://localhost:4567/agencias" + parametros)
@@ -61,10 +63,10 @@ class ClientController {
         }
     }
 
-    def remove() {
-        Agency agencia = agenciasMap.get(params.id)
+    def delete() {
+        Agency agencia = Agency.findByAgency_code(params.id)
         if (agencia != null) {
-            agencia.delete()
+            agencyService.delete(agencia.id)
         }
     }
 }
